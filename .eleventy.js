@@ -4,13 +4,21 @@ const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const Image = require("@11ty/eleventy-img");
 const EleventyFetch = require("@11ty/eleventy-fetch");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+const markdownIt = require("markdown-it");
 
 module.exports = function(eleventyConfig) {
   // Universal Shortcodes (Adds to Liquid, Nunjucks, Handlebars)
   eleventyConfig.addShortcode("bgImg", function(imgName, test) {
     return `  style="background-image: url('./img/webp/${imgName}.webp');"`;
   });
+  // Add within your config module
+  const md = new markdownIt({
+    html: true,
+  });
 
+  eleventyConfig.addFilter("markdown", (content) => {
+    return md.render(content);
+  });
 
   //Base Plugin
     eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
