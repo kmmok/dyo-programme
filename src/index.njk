@@ -1,21 +1,26 @@
 ---
-title: Force of Destiny Programme
+title: Concert Programme
 layout: layouts/default.njk
 footer: footer1
+permalink: index.html
 pagination:
     data: collections.posts
-    size: 5
+    size: 10
     reverse: true
     alias: posts
 ---
-<div class="w-100 overflow-hidden position-relative" id="top">
-  {% include "snippets/hero2.njk" %}
-</div>
+
 <div class="container">
   <div class="row d-flex justify-content-center">
+    <div class="w-100 overflow-hidden position-relative" id="top">
+      {% include "snippets/hero2.njk" %}
+    </div>
     <div class="col-11 col-lg-10 col-xl-6">
       <div class="row border-bottom">
         {% include "snippets/loop.njk" %}
+      </div>
+      <div class="container py-vh-3">
+        {% include 'snippets/donate.njk' %}
       </div>
     </div>
   </div>
